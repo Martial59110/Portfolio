@@ -27,7 +27,7 @@
     <div class="glowing-dots"></div>
   </div>
   <div class="container position-relative">
-    <div class="row align-items-center">
+    <div class="row align-items-center" id="about">
       <div class="col-lg-7">
         <div class="glitch-wrapper">
           <h1 class="display-3 fw-bold text-white glitch" data-text={name}>{name}</h1>

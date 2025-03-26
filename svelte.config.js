@@ -16,12 +16,19 @@ const config = {
 			assets: 'build',
 			fallback: 'index.html',
 			precompress: false,
-			strict: true
+			strict: false
 		}),
 		paths: {
 			base: ''
 		},
-		appDir: 'app'
+		appDir: 'app',
+		prerender: {
+			handleHttpError: ({ path, referrer, message }) => {
+				// ignore all 404s
+				if (message.includes('Not found')) return;
+				throw new Error(message);
+			}
+		}
 	}
 };
 

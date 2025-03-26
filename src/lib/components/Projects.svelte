@@ -11,6 +11,7 @@
     playStoreUrl?: string;
     codeUrl?: string;
     demoUrl?: string;
+    apiUrl?: string;
   };
 
   type Category = {
@@ -45,9 +46,96 @@
         }
       ]
     },
+    showcase: {
+      title: "Sites Vitrines",
+      projects: [
+        {
+          title: "Association A.I.R",
+          description: "Site vitrine pour l'association Accueil Insertion Rencontre.",
+          image: "/projects/coming-soon.png",
+          technologies: [
+          
+          ],
+          type: "web",
+         
+        },
+        {
+          title: "Nouvoulook",
+          description: "Site vitrine pour la boutique solidaire Nouvoulook.",
+          image: "/projects/coming-soon.png",
+          technologies: [
+        
+          ],
+          type: "web",
+
+        }
+      ]
+    },
     web: {
       title: "Applications Web et Logiciels",
       projects: [
+        {
+          title: "A.I.R",
+          description: "Logiciel interne pour l'association A.I.R.",
+          image: "/projects/coming-soon.png",
+          technologies: [
+           
+          ],
+          type: "web",
+        },
+        {
+          title: "Bot discord Onboarding",
+          description: "Création d'un bot discord pour la gestion des channels et des rôles pour le client Simplon.",
+          image: "/projects/discord-bot.png",
+          technologies: [
+            {
+              name: "NestJS",
+              logo: "https://nestjs.com/img/logo-small.svg"
+            },
+            {
+              name: "TypeScript",
+              logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+            },
+            {
+              name: "Discord.js",
+              logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/discordjs/discordjs-original.svg"
+            },
+            {
+              name: "TypeORM",
+              logo: "https://raw.githubusercontent.com/typeorm/typeorm/master/resources/logo_big.png"
+            },
+            {
+              name: "Fastify",
+              logo: "/icons/fastify.svg"
+            },
+            {
+              name: "Pino",
+              logo: "/icons/pino.png"
+            }
+          ],
+          type: "web",
+          codeUrl: "https://github.com/Martial59110/bot-discord-onboarding",
+          apiUrl: "https://github.com/Martial59110/bots-discord-api",
+          demoUrl: "https://github.com/Martial59110/discord-onboarding-documentation"
+        },
+        {
+          title: "Mutuelle Boboniort",
+          description: "Application de mutuelle pour les employés.",
+          image: "/projects/Boboniort.png",
+          technologies: [
+            {
+              name: "COBOL",
+              logo: "/icons/cobol.svg"
+            },
+            {
+              name: "PostgreSQL",
+              logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+            }
+          ],
+          type: "web",
+          codeUrl: "https://github.com/Martial59110/Boboniort-Mutual-Insurance"
+        
+        },
         {
           title: "La bonne auberge",
           description: "Application de restaurant cowboy avec une architecture MVC.",
@@ -100,9 +188,9 @@
   };
 </script>
 
-<section class="projects py-6 bg-darker">
+<section class="projects py-6 bg-darker" id="projects">
   <div class="container">
-    <h2 class="text-center text-white mb-5">Projets Innovants</h2>
+    <h2 class="text-center text-white mb-5">Projets</h2>
     
     {#each Object.entries(categories) as [key, category]}
       <div class="category-section mb-5">
@@ -128,6 +216,16 @@
                   {#if project.type === 'mobile'}
                     <a href={project.playStoreUrl} class="project-link" target="_blank" rel="noopener noreferrer">
                       <i class="fab fa-google-play"></i> Google Play
+                    </a>
+                  {:else if project.title === "Bot discord Onboarding"}
+                    <a href={project.codeUrl} class="project-link" target="_blank" rel="noopener noreferrer">
+                      <i class="fas fa-robot"></i> Code du Bot
+                    </a>
+                    <a href={project.apiUrl} class="project-link" target="_blank" rel="noopener noreferrer">
+                      <i class="fas fa-code"></i> Code de l'API
+                    </a>
+                    <a href={project.demoUrl} class="project-link" target="_blank" rel="noopener noreferrer">
+                      <i class="fas fa-book"></i> Documentation
                     </a>
                   {:else}
                     <a href={project.codeUrl} class="project-link" target="_blank" rel="noopener noreferrer">
@@ -254,6 +352,9 @@
   .project-links {
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top: 1.5rem;
   }
 
   .project-link {
@@ -263,11 +364,21 @@
     color: var(--primary);
     text-decoration: none;
     font-size: 0.9rem;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .project-link:hover {
     color: var(--secondary);
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .project-link i {
+    font-size: 1rem;
   }
 
   @media (max-width: 1024px) {
